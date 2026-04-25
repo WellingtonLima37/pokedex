@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oxanium', cursive;
+    
+}
+html{
+    cursor: url('../Images/cursor/left_ptr.png'), default;
+    overflow: hidden;
+}
+body{
+    cursor: url('../Images/cursor/left_ptr.png'), default;
+    background-image: url('../Images/fundo.gif');
+    background-size: auto;
+    background-repeat:no-repeat;
+    background-position-y: -90px;
+    background-color: #81b771;
+    text-align: center;   
+}
+
+main{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+   
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+
+
+.container_1{
+    display: block;
+
+}
+.container_2{
+    display: none;
+
+}
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.clear{
+    clear: both;
+}
+
+.w50{
+    width: 50%;
+    text-align: center;
+}
+
+
+.clear{
+    clear: both;
+}
+
+.instructions{
+    display: inline-block;
+    position: absolute;
+    background: rgba(255, 60, 60, 0.445);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 3px solid #d40040;
+    width: 70%;
+    height: 15%;
+    top: 108%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cp{
+    position: absolute;
+    bottom: 18%;
+    left: 55%;
+    font-family: 'VT323', monospace;
+    color: #fff;
+    font-size: clamp(1px, 2vw, 90px);
+}
+
+.cp span{
+    left: 100%;
+    top: 0%;
+}
+.stats{
+    position: absolute;
+    color: #fff;
+    top: 28.5%;
+    left: 55%;
+    font-family: 'VT323', monospace;
+    text-align: left;
+   font-size: clamp(1px, 1vw, 30px);
+
+
+}
+
+.stats span{
+    font-family: 'VT323', monospace;
+}
+
+.Type{
+
+    position: absolute;
+    left:67%;
+    bottom: 8%;
+    transform: translate(-63%, 20%);
+    height: 6%;
+    width: 12%;
+    border-radius: 2px;
+    box-shadow: -2px 2.5px 0 #535353;
+}
+.Type2{
+
+    position: absolute;
+    left:82%;
+    bottom: 8%;
+    transform: translate(-63%, 20%);
+    height: 6%;
+    width: 12%;
+    border-radius: 2px;
+    box-shadow: -2px 2.5px 0 #535353;
+}
+
+.linkedin{
+    display: none;
+    position: absolute;
+    left:67%;
+    bottom: 8%;
+    transform: translate(-63%, 20%);
+    height: 6%;
+    width: 12%;
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+}
+
+.github{
+    display: none;
+    position: absolute;
+    left:82%;
+    bottom: 8%;
+    transform: translate(-63%, 20%);
+    height: 6%;
+    width: 12%;
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+}
+
+.lamp1{
+    position: absolute;
+    background: rgba(13,238,244);
+    border-radius: 50%;
+    width: 17%;
+    height: 10.5%;
+    top: 2.2%;
+    left: 9%;
+    animation: flick1 1s alternate infinite ease-in-out;
+}
+
+.pokedex{
+    width: 101%;
+    max-width: 425px;
+}
+
+.pokemon_image {
+    position: absolute;
+    left:50%;
+    bottom: 55%;
+    transform: translate(-63%, 20%);
+    height: 18%;
+}
+
+.wellImage{
+    display: none;
+    position: absolute;
+    left:50%;
+    bottom: 53.1%;
+    transform: translate(-63%, 20%);
+    height: 23%;
+}
+
+.pokemon_data{
+   font-size: clamp(5px, 4vw, 25px);
+   position: absolute;
+   font-weight: 600;
+   color: #aaa;
+   top: 54.5%;
+   right: 27%; 
+
+}
+
+.pokemon_name{
+    color: #3a444d ;
+    text-transform: capitalize;
+}
+
+.info{
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+    position: absolute;
+    left:75%;
+    bottom: 84%;
+    transform: translate(-63%, 20%);
+    height: 8%;
+    width: 12.5%;
+    border-radius: 10%;   
+    background-color: #444;
+    box-shadow: -2px 3px 0 #222, -3px 5px 0 #000;
+    border:1px  solid #000;
+}
+
+.info p {
+    font-size: clamp(12px, 5vw, 3rem);
+    font-family: 'VT323', monospace;
+    color: #fff;
+    text-align: center;
+}
+
+.musicON{
+    position: absolute;
+    display: none;
+}
+
+.musicOFF{
+    position: absolute;
+    display: block;
+}
+
+.music{
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+    position: absolute;
+    left:50%;
+    bottom: 88%;
+    transform: translate(-50%, 12%);
+    height: 45px;
+    width: 45px;
+    border-radius: 10%;  
+    background-color: #ffbb00;
+    
+    border:3px  solid #c08d00;
+}
+
+.music img{
+    width: 30px;
+    top: -45%;
+    left: 12%;
+    transform: translateX(75%);
+    transform: translateY(100%);
+}
+
+.form{
+    position: absolute;
+    width: 65%;
+    top: 65%;
+    left: 13.5%;
+    text-align: center;
+}
+
+.input_search{
+    cursor: url('../Images/cursor/xterm.png'),text;
+    width: 100%;
+    padding: 3%;
+    outline: none;
+    border: 3px solid #333;
+    border-radius: 5px;
+    font-weight: 800;
+    color: #3a444d;
+    font-size: clamp(5px, 1vw, 1rem);
+    box-shadow: -3px 3px 0 #888, -5px 6px #333;
+}
+
+.buttons{
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    width: 65%;
+    transform: translate(-57%, 0);
+    display: flex;
+    gap: 20px;
+    
+}
+
+.button{
+    width: 50%;
+    padding: 4%;
+    border:2px  solid #000;
+    border-radius: 5px;
+    font-size: clamp(5px, 1vw, 1rem);
+    font-weight: 600;
+    color: white;
+    background-color: #444;
+    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+
+}
+
+.button:active{
+    cursor: url('../Images/cursor/hand4.png'), pointer;
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+}
+
+.music:active{
+    cursor: url('../Images/cursor/hand4.png'), pointer;
+    box-shadow: inset -4px 4px 0 #a88100;
+    
+}
+
+.music:active img{
+    top: -25%;
+    left: 17%;
+    transform: translateX(100%);
+    transform: translateY(100%);
+    width: 25px;
+    padding-right: 2.5px;
+}
+
+.info:active{
+    cursor: url('../Images/cursor/hand4.png'), pointer;
+}
+
+.linkedin:active{
+    cursor: url('../Images/cursor/hand4.png'), pointer;
+}
+
+.lamp2{
+    position: absolute;
+    background: rgb(3, 172, 164);
+    border-radius: 50%;
+    width: 2.4%;
+    height: 3%;
+    top: 60%;
+    left: 87.7%;
+    animation: flick1 .4s alternate infinite ease-in-out;
+}
+
+.sing{
+    position: absolute;
+    font-family: 'VT323', monospace;
+    color: rgba(53, 109, 101, 0.5);
+    font-size:35px;
+    left: 1%;
+    bottom: 1%;
+    cursor: url('../Images/cursor/left_ptr.png'), default;
+}
+
+.penSing{
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    color: #6d0b0b;
+    font-size: clamp(10px, 2vw, 1.7rem);
+    bottom: 3.5%;
+    left: 8%;
+}
+
+.teamRocket{    
+    position: absolute;
+
+    left: 40px;
+    top: 630px;
+}
+
+.memberRocket{
+    position: absolute;
+    display: block;
+    width: 150PX;
+    bottom: -80px;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.bush   {
+    cursor: url('../Images/cursor/hand3.png'), pointer;
+    position: absolute;
+    width: 250PX;
+    top: 0px;
+}
+
+.bush:active{
+    cursor: url('../Images/cursor/hand5.png'), pointer;
+}
+
+.jigglypuff-box{
+    position: absolute;
+    left: 1300px;
+    top: 670px;
+    width: 150px;
+    align-items: center;
+    text-align: center;
+    cursor: url('../Images/cursor/microfone.png'), pointer;
+}
+
+.jigglypuff{
+    position: absolute;
+    width: 130px;
+    z-index: 2;
+}
+
+.jigglyShadow{
+    position: absolute;
+    width: 100px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 93px;
+    top: 115px;
+    
+    
+}
+
+
+  
+@keyframes shake-horizontal {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        50% {
+          transform: translateX(10px);
+        }
+        75% {
+          transform: translateX(-10px);
+        }
+      }
+  
+/*-------------------------END---------------------------*/
+
+
+
+
+/*----------------------backAtive------------------------*/
+@keyframes flick1 {
+    from{
+        background: rgba(13,238,244, 0%);
+        filter: drop-shadow(0 0 0 rgb(13,238,244));
+    }to{
+        background: rgba(13,238,244, 55%);
+        filter: drop-shadow(0 0 18px rgb(153, 250, 253));
+    }
+}
+
+
+.backActive.lamp1{
+    position: absolute;
+    background: rgb(3, 172, 158);
+    border-radius: 50%;
+    width: 8.5%;
+    height: 10.5%;
+    top: 2.2%;
+    left: 5%;
+    animation: flick1 1s alternate infinite ease-in-out;
+}
+
+
+.backActive.pokemon_image {
+    position: absolute;
+    left:26%;
+    bottom: 56%;
+    transform: translate(-63%, 20%);
+    height: 18%;
+}
+
+.backActive.pokemon_data{
+   font-size: clamp(1px, 2vw, 25px);
+   position: absolute;
+   font-weight: 600;
+   color: #aaa;
+   top: 54.5%;
+   right: 62%; 
+
+}
+
+.backActive.wellImage{
+    position: absolute;
+    left:25%;
+    bottom: 53.2%;
+    transform: translate(-63%, 20%);
+    height: 23%;
+}
+
+.pokemon_name{
+    color: #3a444d ;
+    text-transform: capitalize;
+}
+
+.backActive.info{
+    cursor: url('../Images/cursor/hand2.png'), pointer;
+    position: absolute;
+    left:38%;
+    bottom: 84%;
+    transform: translate(-63%, 20%);
+    height: 8%;
+    width: 6%;
+    border-radius: 10%;
+    background-color: #444;
+    box-shadow: -2px 3px 0 #222, -3px 5px 0 #000;
+    border:1px  solid #000;
+    font-family: 'VT323', monospace;
+}
+
+.backActive.info p {
+    padding-top: 7%;
+    font-size: clamp(1px, 2vw, 60px);
+    font-family: 'VT323', monospace;
+    color: #ffffff;
+}
+
+.backActive.form{
+    size: clamp(5px, 4vw, 25px);
+    position: absolute;
+    width: 35%;
+    top: 65%;
+    left: 6%;
+    text-align: center;
+}
+
+
+.backActive.buttons{
+    position: absolute;
+    bottom: 15%;
+    left: 26%;
+    width: 35%;
+    transform: translate(-57%, 0);
+    display: flex;
+    gap: 20px;
+    
+}
+
+.info:active{
+    cursor: url('../Images/cursor/hand4.png'), pointer;
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+}
+
+.backActive.penSing{
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    color: #6d0b0b;
+    font-size: clamp(10px, 2vw, 1.7rem);
+    bottom: 3.5%;
+    left: 4%;
+
+}
+
+
+
+/*-----------------------------END-------------------------*/
+
+
+
+
+
+
+
+
+@media screen and (max-width: 720px){
+    .pokemon_data{
+        font-size: clamp(5px, 3.5vw, 25px);
+    
+    }
+}
+
+
+
+/*--Pokemon Types--*/
+
+
+.Empty{
+    background-image: url(../Images/types/Empty.png);
+    background-size: 100%;
+}
+
+.Normal{
+    background-image: url(../Images/types/Normal.png);
+    background-size: 100%;
+}
+
+.Fire{
+    background-image: url(../Images/types/Fire.png);
+    background-size: 100%;
+}
+
+.Bug{
+    background-image: url(../Images/types/Bug.png);
+    background-size: 100%;
+}
+
+.Dark{
+    background-image: url(../Images/types/Dark.png);
+    background-size: 100%;
+}
+
+.Dragon{
+    background-image: url(../Images/types/Dragon.png);
+    background-size: 100%;
+}
+
+.Electric{
+    display: block;
+    background-image: url(../Images/types/Electric.png);
+    background-size: 100%;
+}
+
+.Fairy{
+    background-image: url(../Images/types/Fairy.png);
+    background-size: 100%;
+}
+
+.Fighting{
+    background-image: url(../Images/types/Fighting.png);
+    background-size: 100%;
+}
+
+.Flying{
+    background-image: url(../Images/types/Flying.png);
+    background-size: 100%;
+}
+
+.Ghost{
+    background-image: url(../Images/types/Ghost.png);
+    background-size: 100%;
+}
+
+.Grass{
+    background-image: url(../Images/types/Grass.png);
+    background-size: 100%;
+}
+
+.Ground{
+    background-image: url(../Images/types/Ground.png);
+    background-size: 100%;
+}
+
+.Ice{
+    background-image: url(../Images/types/Ice.png);
+    background-size: 100%;
+}
+
+.Poison{
+    background-image: url(../Images/types/Poison.png);
+    background-size: 100%;
+}
+
+.Psychic{
+    background-image: url(../Images/types/Psychic.png);
+    background-size: 100%;
+}
+
+.Rock{
+    background-image: url(../Images/types/Rock.png);
+    background-size: 100%;
+}
+
+.Steel{
+    background-image: url(../Images/types/Stell.png);
+    background-size: 100%;
+}
+
+.Water{
+    background-image: url(../Images/types/Water.png);
+    background-size: 100%;
+}
+.Linkedin{
+    background-image: url(../Images/types/Linkedin.png);
+    background-size: 100%;
+}
+.Github{
+    background-image: url(../Images/types/Github.png);
+    background-size: 100%;
+}
+
+/*--End Pokemon Types--*/
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-5px); }
+    20% { transform: translateX(5px); }
+    30% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    60% { transform: translateX(5px); }
+    70% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    90% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+.slide-in-blurred-bottom {
+	animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+
+@keyframes slide-rotate-hor-bottom {
+    0% {
+      transform: translateY(0) rotateX(0deg);
+    }
+    100% {
+      transform: translateY(150px) rotateX(90deg);
+    }
+  }
+
+  @keyframes slide-rotate-hor-bottom2 {
+    0% {
+      transform: translateY(0) rotateX(0deg);
+    }
+    100% {
+      transform: translateY(150px) rotateX(90deg);
+    }
+  }
+  
