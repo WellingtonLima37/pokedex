@@ -53,6 +53,60 @@ const dadosPessoais = {
   
 
 let searchPokemon = '1';
+let pokemonList = []; // Lista de todos os Pokémons
+let fuseIndex = null; // Índice do Fuse para busca fuzzy
+
+// 🤖 Função para carregar lista de Pokémons (executado uma única vez)
+const loadPokemonList = async () => {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1025');
+        const data = await response.json();
+        pokemonList = data.results.map(p => ({
+            name: p.name,
+            url: p.url
+        }));
+        
+        // Criar índice Fuse para busca fuzzy
+        fuseIndex = new Fuse(pokemonList, {
+            keys: ['name'],
+            threshold: 0.4, // 0.4 significa 60% de similaridade mínima
+            ignoreLocation: true
+        });
+        
+        console.log(`✅ Lista de ${pokemonList.length} Pokémons carregada com sucesso!`);
+    } catch (error) {
+        console.error('❌ Erro ao carregar lista de Pokémons:', error);
+    }
+};
+
+// 🔍 Função para corrigir o nome do Pokémon usando fuzzy matching
+const correctPokemonName = (input) => {
+    if (!fuseIndex || pokemonList.length === 0) {
+        return null; // Se lista não carregou, retorna null
+    }
+    
+    // Buscar correspondências
+    const results = fuseIndex.search(input);
+    
+    if (results.length > 0) {
+        const bestMatch = results[0];
+        const similarity = 1 - bestMatch.score; // Converte score para porcentagem de similaridade
+        
+        // Se similaridade > 60%, retorna a sugestão
+        if (similarity > 0.6) {
+            return {
+                corrected: bestMatch.item.name,
+                similarity: Math.round(similarity * 100),
+                wasCorrupted: bestMatch.item.name.toLowerCase() !== input.toLowerCase()
+            };
+        }
+    }
+    
+    return null;
+};
+
+// Carregar lista de Pokémons quando a página carrega
+loadPokemonList();
 
 const fetchPokemon = async (pokemon) => {
     const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
@@ -91,9 +145,27 @@ async function renderPokemon(inputValue) {
     // Renderize outras informações pessoais aqui
   } else {
     // Caso contrário, renderize informações de Pokémon
+    
+    // 🤖 Tentar corrigir o nome usando fuzzy matching
+    let correctionInfo = null;
+    let searchValue = inputValue;
+    
+    if (typeof inputValue === 'string' && inputValue.length > 0) {
+        correctionInfo = correctPokemonName(inputValue);
+        
+        if (correctionInfo) {
+            searchValue = correctionInfo.corrected;
+            
+            // Se foi corrigido, mostrar mensagem
+            if (correctionInfo.wasCorrupted) {
+                console.log(`🤖 IA Corrigiu: "${inputValue}" → "${correctionInfo.corrected}" (${correctionInfo.similarity}% similaridade)`);
+            }
+        }
+    }
+    
     pokemonName.innerHTML = "loading...💾";
     pokemonNumber.innerHTML = '';
-    const data = await fetchPokemon(inputValue);
+    const data = await fetchPokemon(searchValue);
 
     if (data) {
         let pokemon = data;
@@ -138,6 +210,11 @@ async function renderPokemon(inputValue) {
         github.style.display = 'none';
         wellImage.style.display = 'none';
         pokemonImage.style.display = 'block';
+        
+        // Mostrar aviso se foi corrigido
+        if (correctionInfo && correctionInfo.wasCorrupted) {
+            console.log(`✨ Pokémon encontrado: "${correctionInfo.corrected}" (corrigido de "${inputValue}")`);
+        }
 
     }
 
